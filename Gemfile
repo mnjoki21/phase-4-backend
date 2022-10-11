@@ -11,9 +11,9 @@ gem "sqlite3", "~> 1.4"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
-
+# use active model has_secure_password
 gem 'bcrypt', '~> 3.1', '>= 3.1.18'
- 
+  # use rack cors for handling cross origin resource sharing making cross-origin AJAX possible
 gem "rack-cors", :require => 'rack/cors' 
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
