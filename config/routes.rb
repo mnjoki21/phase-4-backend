@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-
-
-  resources :subscriptions, only: [:create]
   resources :reminders
-  resources :users 
+  resources :categories
+  resources :subscriptions
+  resources :providers
 
   post "/signup", to: "users#create"
   get "/me", to: "users#show"

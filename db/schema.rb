@@ -10,24 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_11_055044) do
-  create_table "reminders", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2022_10_11_223459) do
+  create_table "categories", force: :cascade do |t|
     t.string "name"
-    t.string "status"
-    t.string "due_date"
-    t.integer "user_id"
-    t.integer "subscription_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "providers", force: :cascade do |t|
+    t.string "name"
+    t.text "logo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reminders", force: :cascade do |t|
+    t.string "provider"
+    t.string "category"
+    t.string "subscription"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "subscriptions", force: :cascade do |t|
     t.string "name"
-    t.string "provider"
-    t.string "category"
-    t.integer "amount"
+    t.string "amount"
     t.string "start_date"
     t.string "billing_cycle"
+    t.integer "provider_id"
+    t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
