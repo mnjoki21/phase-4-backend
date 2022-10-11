@@ -3,7 +3,7 @@ class RemindersController < ApplicationController
     def create
         reminder = Reminder.create!(reminder_params)
         if reminder.valid?
-            render json: reminder, :status: :created 
+            render json: reminder, status: :created 
         else
             render json: { errors: reminder.errors }, status: :unprocessable_entity 
         end 
@@ -15,7 +15,7 @@ class RemindersController < ApplicationController
             reminder.update(reminder_params)
             render json: reminder
         else
-            render json { error: "reminder not created yet" } , status: :not_found
+            render json: { error: "reminder not created yet" }, status: :not_found
         end
         
     end
