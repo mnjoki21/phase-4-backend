@@ -1,4 +1,20 @@
 class SubscriptionsController < ApplicationController
+
+    # get/subscriptions
+    def index 
+        subscriptions = Category.all
+        render json: subscriptions
+    end
+    
+    # get/subscriptions/:id
+    def show
+        subscription = Category.find_by(id: parmas[:id])
+        if subscription
+            render json: subscription 
+        else
+            render json: { error: "subscription not available" }, status: :not_found
+        end 
+    end
     # post/subscription/:id
 
     def create
