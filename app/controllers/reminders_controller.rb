@@ -35,6 +35,7 @@ class RemindersController < ApplicationController
         else
             render json: { error: "reminder not created yet" }, status: :not_found
         end
+    end
 
     private
 
@@ -42,4 +43,5 @@ class RemindersController < ApplicationController
         params.permit(:provider, :category, :subscription)
 
     end
+ []
 end
