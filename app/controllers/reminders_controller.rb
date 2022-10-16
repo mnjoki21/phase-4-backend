@@ -37,6 +37,17 @@ class RemindersController < ApplicationController
         end
     end
 
+    def destroy
+        reminder = Reminder.find(params[:user_id])
+        if reminder
+            bird.destroy
+            head :no_content
+        else
+            render json: {error: "Reminder not found"}, status: :not_found
+        end
+
+        
+
     private
 
     def reminder_params

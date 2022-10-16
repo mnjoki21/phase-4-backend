@@ -2,13 +2,13 @@ class SubscriptionsController < ApplicationController
 
     # get/subscriptions
     def index 
-        subscriptions = Category.all
+        subscriptions = Subscription.all
         render json: subscriptions
     end
     
     # get/subscriptions/:id
     def show
-        subscription = Category.find_by(id: parmas[:id])
+        subscription = Subscription.find_by(id: parmas[:id])
         if subscription
             render json: subscription 
         else
@@ -37,10 +37,22 @@ class SubscriptionsController < ApplicationController
         
     end
 
+    def destroy
+        subscription = Subscription.find(params[:id])
+        if subscription
+            subscription.destroy
+            head :no_content
+        else
+            render json: {error: "Subscription not found"}, status: :not_found
+        end
+
+        
+    end
+
     private
 
     def subscription_params
-        params.permit(:name, :amount, :start_date, :billing_cycle, :provider_id, :category_id)
+        params.permit(:name, :amount, :start_date, :billing_cycle)
         
     end
 end
